@@ -9,7 +9,6 @@ class Starter:
 
     @staticmethod
     def open_get_ata(self, file):
-
         # 下载图片、操作数据库类及自动分类的实例化
         imagel = ImageLoader()
         db_o = DBOperator()

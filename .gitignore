@@ -13,3 +13,4 @@ Desktop.ini
 *.egg-info
 dist
 build
+*.txt

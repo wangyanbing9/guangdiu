@@ -12,7 +12,20 @@ class Crawler:
     crawl and pre_process data from guangdiu website。
     """
     @staticmethod
-    def get_product_description(detail_url):
+    def process_description(origin_description):
+        replace_words = {'值友', '分友'}
+        delete_words = {'一分', '点击购买>>', '点击加入', '点击', '立即购买>>', '惠惠一键', '惠惠', '\t'}
+        new_description = origin_description
+
+        for word in replace_words:
+            pattern = re.compile(word)
+            new_description = re.sub(pattern, '网友', new_description)
+        for word in delete_words:
+            new_description = new_description.replace(word, '')
+        print(new_description)
+        return new_description
+
+    def get_product_description(self, detail_url):
         """
         Return detail description of product
         """
@@ -25,7 +38,8 @@ class Crawler:
         description = ''
         for description_tag in descriptions_list:
             description += description_tag.get_text().strip()
-        return description
+        new_description = self.process_description(description)
+        return new_description
 
     def get_product_info(self, pages=30):
         """
@@ -65,3 +79,4 @@ class Crawler:
 if __name__ == '__main__':
     crawler = Crawler()
     crawler.get_product_info()
+    # Crawler.process_description("中文字符串值友分友是什么点击购买>>代立即购买课老师")
