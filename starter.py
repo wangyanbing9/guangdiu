@@ -62,7 +62,6 @@ class Starter:
 
     @staticmethod
     def operate_db(self, dbo, ac , model, line_f):
-
         # 以下为数据库操作,插入到product表
         product = [str(model), line_f[5], line_f[1]]  # 参数插入表中 model asin image 三个字段
         dbo.insert_product(product)

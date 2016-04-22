@@ -11,6 +11,7 @@ class Crawler:
     """
     crawl and pre_process data from guangdiu website。
     """
+
     @staticmethod
     def process_description(origin_description):
         replace_words = {'值友', '分友'}
