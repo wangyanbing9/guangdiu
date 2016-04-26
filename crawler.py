@@ -49,7 +49,7 @@ class Crawler:
         """
         pattern1 = re.compile('http://(.*).jpg')
         pattern2 = re.compile("((?!/).)*\.jpg")
-        pattern3 = re.compile("(?!/)B[a-zA-Z0-9]{9}")
+        pattern3 = re.compile("(?!/)[Bb][a-zA-Z0-9]{9}")
         turn_pages_list = [
             'http://guangdiu.com/cate.php?p={page}&m=Amazon&c=us'
             .format(page=i) for i in range(1, pages+1)]

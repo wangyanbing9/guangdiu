@@ -7,10 +7,9 @@ from util.dbOper import *
 
 class Starter:
 
-    @staticmethod
-    def open_get_ata(self, file):
+    def open_get_data(self, file):
         # 下载图片、操作数据库类及自动分类的实例化
-        imagel = ImageLoader()
+        image_loader = ImageLoader()
         db_o = DBOperator()
         ac_o = AutoClassify()
         # 打开原始数据文件及去重（依据图片名）文件
@@ -49,7 +48,7 @@ class Starter:
                     f3.write(str(model) + '\n')
                     print('add model record')
                     # 下载图片
-                    imagel.get_save_img(line_f1[0], line_f1[2])
+                    image_loader.get_save_img(line_f1[0], line_f1[2])
                     time.sleep(2)
                     print('download image：' + line_f1[2])
                     self.operate_db(db_o, ac_o, model, line_f1)
@@ -61,7 +60,7 @@ class Starter:
             db_o.close_db()
 
     @staticmethod
-    def operate_db(self, dbo, ac , model, line_f):
+    def operate_db(dbo, ac , model, line_f):
         # 以下为数据库操作,插入到product表
         product = [str(model), line_f[5], line_f[1]]  # 参数插入表中 model asin image 三个字段
         dbo.insert_product(product)
@@ -85,6 +84,6 @@ class Starter:
 if __name__ == '__main__':
     file_name = 'guangdiu.txt'
     fr = Starter()
-    fr.open_get_ata(file_name)
+    fr.open_get_data(file_name)
     os.system("pause")
 
