@@ -1,13 +1,13 @@
 #!/usr/bin/env python
 # coding=utf8
 
-import MySQLdb    
+import pymysql
 
 
 class DBOperator:
     
     def __init__(self):
-        self.conn = MySQLdb.connect(host='localhost', user='root', passwd='root', charset='utf8')  # 'gbk'
+        self.conn = pymysql.connect(host='localhost', user='root', passwd='root', charset='utf8')  # 'gbk'
         self.conn.select_db('haitaocn')
 
     def insert_product(self, value):
